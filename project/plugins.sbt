@@ -3,7 +3,7 @@
  * See accompanying LICENSE file.
  */
 // Comment to get more information during initialization
-logLevel := Level.Info
+logLevel := Level.Debug
 
 resolvers += Resolver.url(
   "bintray-sbt-plugin-releases",

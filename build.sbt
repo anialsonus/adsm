@@ -2,6 +2,9 @@
  * Copyright 2015 Yahoo Inc. Licensed under the Apache License, Version 2.0
  * See accompanying LICENSE file.
  */
+
+import com.typesafe.sbt.packager.rpm.RpmPlugin.autoImport._
+
 name := """kafka-manager"""
 
 /* For packaging purposes, -SNAPSHOT MUST contain a digit */
@@ -50,6 +53,10 @@ libraryDependencies ++= Seq(
   "com.unboundid" % "unboundid-ldapsdk" % "4.0.9"
 )
 
+val workaround = {
+  sys.props += "packaging.type" -> "jar"
+  ()
+}
 routesGenerator := InjectedRoutesGenerator
 
 LessKeys.compress in Assets := true
@@ -102,10 +109,10 @@ buildOptions in docker := BuildOptions(
 )
 
 /*
- * Start service as user root
+ * Start service as user kafka-manager
  */
 
-daemonUser in Linux := "root"
+daemonUser in Linux := "kafka-manager"
 
 /* Debian Settings - to create, run as:
    $ sbt debian:packageBin
@@ -128,9 +135,14 @@ packageDescription := "A tool for managing Apache Kafka"
 */
 
 rpmRelease := "1"
-rpmVendor := "yahoo"
-rpmUrl := Some("https://github.com/yahoo/kafka-manager")
+rpmVendor := "Arenadata"
+rpmUrl := Some("https://github.com/arenadata/adsm")
 rpmLicense := Some("Apache")
 rpmGroup := Some("kafka-manager")
+defaultLinuxInstallLocation := "/usr/lib"
+
+maintainerScripts in Rpm := maintainerScriptsAppend((maintainerScripts in Rpm).value)(
+  RpmConstants.Post -> s"mkdir /home/${(daemonUser in Linux).value}; chown ${(daemonUser in Linux).value}:${(daemonUser in Linux).value} /home/${(daemonUser in Linux).value}"
+)
 
 /* End RPM Settings */
