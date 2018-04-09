@@ -19,7 +19,7 @@ import scala.concurrent.duration._
 import scala.util.Try
 
 /**
- * @author hiral
+ * @author hiralKK
  */
 class TestKafkaManager extends CuratorAwareTest with BaseTest {
   private[this] val seededTopic = "km-api-test"
@@ -440,7 +440,7 @@ class TestKafkaManager extends CuratorAwareTest with BaseTest {
     Thread.sleep(2000)
   }
 
-  test("delete topic not supported prior to 2.0.0") {
+  test("delete topic not supported prior to 2.2.0") {
     val future = kafkaManager.deleteTopic("dev",createTopicNameA)
     val result = Await.result(future,duration)
     assert(result.isLeft === true, result)
