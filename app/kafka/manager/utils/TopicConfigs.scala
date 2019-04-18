@@ -40,8 +40,9 @@ object TopicConfigs {
     Kafka_2_0_0 -> zero90.LogConfig,
     Kafka_2_0_1 -> zero90.LogConfig,
     Kafka_2_1_0 -> zero90.LogConfig,
-    Kafka_2_1_1 -> zero90.LogConfig
-    )
+    Kafka_2_1_1 -> zero90.LogConfig,
+    Kafka_2_2_0 -> zero90.LogConfig
+     )
 
   def configNames(version: KafkaVersion) : Set[String] = {
     topicConfigsByVersion.get(version) match {
