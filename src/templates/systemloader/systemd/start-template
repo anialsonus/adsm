@@ -5,6 +5,7 @@ Requires=${{start_facilities}}
 [Service]
 Type=forking
 WorkingDirectory=${{chdir}}
+#EnvironmentFile=${{env_config}}
 EnvironmentFile=/etc/kafka-manager/kafka-manager-env
 ExecStart=${{chdir}}/bin/${{exec}} start
 ExecStop=${{chdir}}/bin/${{exec}} stop
