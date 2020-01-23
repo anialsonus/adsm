@@ -6,7 +6,7 @@
 
             <table class="table">
                 <thead>
-                <tr><th>Active</th><th>Operations</th><th>Version</th></tr>
+                <tr><th style="width:40%">Active</th><th style="width:30%;text-align:center">Version</th><th style="width:30%;text-align:center">Operations</th></tr>
                 </thead>
                 <tbody>
                 @for(cluster <- clusters) {
@@ -18,7 +18,10 @@
                             @cluster.name
                         }
                     </td>
-                    <td>
+                    <td style="text-align:center">
+                        @cluster.version.toString
+                    </td>
+                    <td style="text-align:center">
                         <div class="form-group" role="group" aria-label="Cluster Operations">
                         @features.app(features.KMClusterManagerFeature) {
                             @if(cluster.enabled) {
@@ -51,9 +54,6 @@
                             }
                         }
                         </div>
-                    </td>
-                    <td>
-                        @cluster.version.toString
                     </td>
                 </tr>
                 }

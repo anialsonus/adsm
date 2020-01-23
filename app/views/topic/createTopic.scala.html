@@ -47,7 +47,7 @@
     "Create Topic",
     menu = theMenu,
     breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Create Topic",cluster))) {
-    <div class="col-md-6 un-pad-me">
+    <div class="col-12 un-pad-me">
         <div class="card">
             <div class="card-body"><h3><button type="button" class="btn btn-link" onclick="goBack()"><span class="octicon octicon-arrow-left" aria-hidden="true"></span></button>Create Topic</h3>
             @errorOrForm.fold( views.html.errors.onApiError(_), t => renderForm(t._1))
