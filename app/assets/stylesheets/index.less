@@ -3,25 +3,83 @@
  * See accompanying LICENSE file.
  */
 
+header.navbar {
+  padding: 0;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+
+  & nav.navbar {
+    padding: 0 1rem;
+    & img {height: 30px;}
+  }
+}
+
+.navbar {
+  width: 100%;
+}
+
+.navbar-nav {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+form {
+  display: inline-block;
+}
+
+.btn {
+  padding: .1rem .75rem;
+}
+
+.table td,
+.table th {
+  padding: .3rem;
+}
+
+.breadcrumb {
+  padding: .3rem 1rem;
+  margin-bottom: .5rem;
+  background-color: transparent;
+}
+
+.card {
+  margin-bottom: .5rem;
+}
+
+.card-header {
+  padding: .3rem 1.25rem;
+
+  &>h3 {
+    margin-bottom: 0;
+  }
+}
+
+.card-body {
+  padding: .5rem 1.25rem;
+}
+
+/**
+*/
+
 .un-float-me {
-  float : none;
+  float: none;
 }
 
 .un-pad-me-left {
-  padding-left: 0px ;
+  padding-left: 0px;
 }
 
 .un-pad-me-right {
-  padding-right: 0px ;
+  padding-right: 0px;
 }
 
 .un-pad-me {
-  padding-left: 0px ;
-  padding-right: 0px ;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .ops-button {
-  float: left ;
+  float: left;
   width: 75px;
   margin-left: 5px;
   margin-right: 5px;
@@ -95,4 +153,8 @@
 #selectMetrics {
   width: 100%;
   margin-bottom: 3%;
+}
+
+#topics-table {
+  th {font-weight: normal; font-size: .7rem;}
 }
