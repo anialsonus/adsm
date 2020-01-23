@@ -11,13 +11,16 @@ import grizzled.slf4j.Logging
 import kafka.common.TopicAndPartition
 import kafka.manager.jmx._
 import kafka.manager.utils
+import kafka.manager.utils.one10.MemberMetadata
 import kafka.manager.utils.zero81.ForceReassignmentCommand
+import org.apache.kafka.common.requests.DescribeGroupsResponse
 import org.joda.time.DateTime
 
 import scala.collection.immutable.Queue
 import scala.concurrent.{Await, Future}
 import scala.util.{Failure, Success, Try}
 import scalaz.{NonEmptyList, Validation}
+import scala.collection.immutable.Map
 
 /**
  * @author hiral
@@ -87,7 +90,7 @@ object ActorModel {
   case class CMDeleteTopic(topic: String) extends CommandRequest
   case class CMRunPreferredLeaderElection(topics: Set[String]) extends CommandRequest
   case class CMRunReassignPartition(topics: Set[String], forceSet: Set[ForceReassignmentCommand]) extends CommandRequest
-  case class CMGeneratePartitionAssignments(topics: Set[String], brokers: Set[Int]) extends CommandRequest
+  case class CMGeneratePartitionAssignments(topics: Set[String], brokers: Set[Int], replicationFactor: Option[Int] = None) extends CommandRequest
   case class CMManualPartitionAssignments(assignments: List[(String, List[(Int, List[Int])])]) extends CommandRequest
 
   //these are used by Logkafka
@@ -175,7 +178,7 @@ object ActorModel {
   case class KSGetBrokerState(id: String) extends  KSRequest
 
   sealed trait KARequest extends QueryRequest
-  case class KAGetGroupSummary(groupList: Seq[String], enqueue: java.util.Queue[(String, kafka.coordinator.GroupSummary)]) extends QueryRequest
+  case class KAGetGroupSummary(groupList: Seq[String], enqueue: java.util.Queue[(String, List[MemberMetadata])]) extends QueryRequest
 
   case class TopicList(list: IndexedSeq[String], deleteSet: Set[String], clusterContext: ClusterContext) extends QueryResponse
   case class TopicConfig(topic: String, config: Option[(Int,String)]) extends QueryResponse
