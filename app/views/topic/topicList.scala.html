@@ -47,7 +47,7 @@
         <div class="card">
             <div class="card-header"><h4>Operations</h4></div>
             <div class="card-body">
-            <div class="col-md-6">
+            <div class="col-12">
             <table class="table">
                 <tr>
                     @features.app(features.KMReassignPartitionsFeature) {
@@ -71,7 +71,7 @@
     </div>
     <div class="col-md-12">
         <div class="card">
-            <div class="card-body"><h3>Topics</h3>
+            <div class="card-body">
             @errorOrTopics.fold( 
                 views.html.errors.onApiError(_),
                 tl => views.html.topic.topicListContent(
