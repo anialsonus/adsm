@@ -71,7 +71,7 @@
     </div>
     <div class="col-md-12">
         <div class="card">
-            <div class="card-body"><b>Topics</b>
+            <div class="card-body">
             @errorOrTopics.fold( 
                 views.html.errors.onApiError(_),
                 tl => views.html.topic.topicListContent(

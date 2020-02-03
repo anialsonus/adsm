@@ -29,7 +29,7 @@ errorOrBrokers.toOption.map(_.clusterContext.clusterFeatures).getOrElse(kafka.ma
 menu = theMenu,
 breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.withViewAndCluster("Brokers",cluster))) {
 <div class="row">
-    <div class="col-md-6 un-pad-me">
+    <div class="col-md-12 col-xl-6">
         <div class="card">
             <div class="card-header">
                 <h3>
@@ -43,7 +43,7 @@ breadcrumbs=views.html.navigation.breadCrumbs(models.navigation.BreadCrumbs.with
             </div>
         </div>
     </div>
-    <div class="col-md-6 un-pad-me">
+    <div class="col-md-12 col-xl-6">
         <div class="card">
             <div class="card-header">
                 <h3>Combined Metrics</h3>
