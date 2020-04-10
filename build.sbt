@@ -50,7 +50,8 @@ libraryDependencies ++= Seq(
   "org.apache.curator" % "curator-test" % "2.12.0" % "test",
   "org.mockito" % "mockito-core" % "1.10.19" % "test",
   "com.yammer.metrics" % "metrics-core" % "2.2.0" force(),
-  "com.unboundid" % "unboundid-ldapsdk" % "4.0.9"
+  "com.unboundid" % "unboundid-ldapsdk" % "4.0.9",
+  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.7"
 )
 
 val workaround = {
