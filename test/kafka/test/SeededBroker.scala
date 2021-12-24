@@ -7,13 +7,13 @@ package kafka.test
 import java.time.Duration
 import java.util.{Properties, UUID}
 import java.util.concurrent.atomic.AtomicInteger
-
 import grizzled.slf4j.Logging
 import kafka.consumer._
 import kafka.manager.model.{Kafka_0_8_2_0, Kafka_1_1_0}
 import kafka.manager.utils.AdminUtils
 import kafka.message.{DefaultCompressionCodec, NoCompressionCodec}
 import kafka.serializer.DefaultDecoder
+import kafka.test.handlers.defaultUncaughtExceptionHandler
 import org.apache.curator.framework.imps.CuratorFrameworkState
 import org.apache.curator.framework.{CuratorFramework, CuratorFrameworkFactory}
 import org.apache.curator.retry.ExponentialBackoffRetry
@@ -136,11 +136,7 @@ case class HighLevelConsumer(topic: String,
   val kstream : KStream[Array[Byte], Array[Byte]] = streamsBuilder.stream(topic)
 
   val kafkaStreams = new KafkaStreams(streamsBuilder.build(), commonConsumerConfig)
-  kafkaStreams.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler {
-    override def uncaughtException(t: Thread, e: Throwable): Unit = {
-      error("Failed to initialize KafkStreams", e)
-    }
-  })
+  kafkaStreams.setUncaughtExceptionHandler(new defaultUncaughtExceptionHandler())
 
   kafkaStreams.start()
   info("setup:complete topic=%s for bk=%s and groupId=%s".format(topic,commonConsumerConfig.getProperty(BOOTSTRAP_SERVERS_CONFIG),groupId))

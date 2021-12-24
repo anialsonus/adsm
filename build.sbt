@@ -40,8 +40,8 @@ libraryDependencies ++= Seq(
   "org.slf4j" % "log4j-over-slf4j" % "1.7.25",
   "com.adrianhurt" %% "play-bootstrap" % "1.4-P26-B4" exclude("com.typesafe.play", "*"),
   "org.clapper" %% "grizzled-slf4j" % "1.3.3",
-  "org.apache.kafka" %% "kafka" % "2.4.0" exclude("log4j","log4j") exclude("org.slf4j", "slf4j-log4j12") force(),
-  "org.apache.kafka" % "kafka-streams" % "2.2.0",
+  "org.apache.kafka" %% "kafka" % "2.8.1" exclude("log4j","log4j") exclude("org.slf4j", "slf4j-log4j12") force(),
+  "org.apache.kafka" % "kafka-streams" % "2.8.1",
   "com.beachape" %% "enumeratum" % "1.5.13",
   "com.github.ben-manes.caffeine" % "caffeine" % "2.6.2",
   "com.typesafe.play" %% "play-logback" % "2.6.21",
@@ -50,7 +50,8 @@ libraryDependencies ++= Seq(
   "org.apache.curator" % "curator-test" % "2.12.0" % "test",
   "org.mockito" % "mockito-core" % "1.10.19" % "test",
   "com.yammer.metrics" % "metrics-core" % "2.2.0" force(),
-  "com.unboundid" % "unboundid-ldapsdk" % "4.0.9"
+  "com.unboundid" % "unboundid-ldapsdk" % "4.0.9",
+  "org.eclipse.jetty" % "jetty-server" % "11.0.7" % "test"
 )
 
 routesGenerator := InjectedRoutesGenerator

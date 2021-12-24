@@ -24,7 +24,8 @@ import java.util.Optional
 import java.util.concurrent.locks.ReentrantLock
 
 import kafka.api.{ApiVersion, KAFKA_2_1_IV0, KAFKA_2_1_IV1}
-import kafka.common.{MessageFormatter, OffsetAndMetadata}
+import kafka.common.OffsetAndMetadata
+import org.apache.kafka.common.MessageFormatter
 import kafka.coordinator.group.JoinGroupResult
 import kafka.utils.{CoreUtils, Logging, nonthreadsafe}
 import org.apache.kafka.clients.consumer.ConsumerRecord
@@ -716,7 +717,7 @@ object GroupMetadataManager {
         val commitTimestamp = value.get(OFFSET_VALUE_COMMIT_TIMESTAMP_FIELD_V3).asInstanceOf[Long]
 
         val leaderEpochOpt: Optional[Integer] = if (leaderEpoch < 0) Optional.empty() else Optional.of(leaderEpoch)
-        OffsetAndMetadata(offset, leaderEpochOpt, metadata, commitTimestamp)
+        OffsetAndMetadata(offset, leaderEpochOpt, metadata, commitTimestamp, None)
       } else {
         throw new IllegalStateException(s"Unknown offset message version: $version")
       }
