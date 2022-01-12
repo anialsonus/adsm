@@ -68,6 +68,7 @@ class Topic (val cc: ControllerComponents, val kafkaManagerContext: KafkaManager
   val kafka_2_1_1_Default = CreateTopic("",1,1,TopicConfigs.configNamesAndDoc(Kafka_2_1_1).map{ case (n, h) => TConfig(n,None,Option(h))}.toList)
   val kafka_2_2_0_Default = CreateTopic("",1,1,TopicConfigs.configNamesAndDoc(Kafka_2_2_0).map{ case (n, h) => TConfig(n,None,Option(h))}.toList)
   val kafka_2_4_0_Default = CreateTopic("",1,1,TopicConfigs.configNamesAndDoc(Kafka_2_4_0).map{ case (n, h) => TConfig(n,None,Option(h))}.toList)
+  val kafka_2_6_0_Default = CreateTopic("",1,1,TopicConfigs.configNamesAndDoc(Kafka_2_6_0).map{ case (n, h) => TConfig(n,None,Option(h))}.toList)
   val kafka_2_8_1_Default = CreateTopic("",1,1,TopicConfigs.configNamesAndDoc(Kafka_2_8_1).map{ case (n, h) => TConfig(n,None,Option(h))}.toList)
 
   val defaultCreateForm = Form(
@@ -172,6 +173,7 @@ class Topic (val cc: ControllerComponents, val kafkaManagerContext: KafkaManager
           case Kafka_2_1_1 => (defaultCreateForm.fill(kafka_2_1_1_Default), clusterContext)
           case Kafka_2_2_0 => (defaultCreateForm.fill(kafka_2_2_0_Default), clusterContext)
           case Kafka_2_4_0 => (defaultCreateForm.fill(kafka_2_4_0_Default), clusterContext)
+          case Kafka_2_6_0 => (defaultCreateForm.fill(kafka_2_6_0_Default), clusterContext)
           case Kafka_2_8_1 => (defaultCreateForm.fill(kafka_2_8_1_Default), clusterContext)
         }
       }
@@ -424,6 +426,7 @@ class Topic (val cc: ControllerComponents, val kafkaManagerContext: KafkaManager
           case Kafka_2_1_1 => TopicConfigs.configNamesAndDoc(Kafka_2_1_1).map { case (n, h) => (n,TConfig(n,None, Option(h))) }
           case Kafka_2_2_0 => TopicConfigs.configNamesAndDoc(Kafka_2_2_0).map { case (n, h) => (n,TConfig(n,None, Option(h))) }
           case Kafka_2_4_0 => TopicConfigs.configNamesAndDoc(Kafka_2_4_0).map { case (n, h) => (n,TConfig(n,None, Option(h))) }
+          case Kafka_2_6_0 => TopicConfigs.configNamesAndDoc(Kafka_2_6_0).map { case (n, h) => (n,TConfig(n,None, Option(h))) }
           case Kafka_2_8_1 => TopicConfigs.configNamesAndDoc(Kafka_2_8_1).map { case (n, h) => (n,TConfig(n,None, Option(h))) }
         }
         val updatedConfigMap = ti.config.toMap

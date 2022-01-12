@@ -41,6 +41,7 @@ object LogkafkaNewConfigs {
     Kafka_2_1_1 -> logkafka82.LogConfig,
     Kafka_2_2_0 -> logkafka82.LogConfig,
     Kafka_2_4_0 -> logkafka82.LogConfig,
+    Kafka_2_6_0 -> logkafka82.LogConfig,
     Kafka_2_8_1 -> logkafka82.LogConfig
   )
 
