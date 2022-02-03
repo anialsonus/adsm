@@ -22,6 +22,8 @@ assemblyMergeStrategy in assembly := {
   case other => (assemblyMergeStrategy in assembly).value(other)
 }
 
+dependencyOverrides +=  "org.slf4j" % "slf4j-api" % "1.7.35"
+
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.5.19",
   "com.typesafe.akka" %% "akka-slf4j" % "2.5.19",
@@ -37,7 +39,7 @@ libraryDependencies ++= Seq(
   "org.apache.curator" % "curator-recipes" % "2.12.0" exclude("log4j","log4j") exclude("org.slf4j", "slf4j-log4j12") force(),
   "org.json4s" %% "json4s-jackson" % "3.6.5",
   "org.json4s" %% "json4s-scalaz" % "3.6.5",
-  "org.slf4j" % "log4j-over-slf4j" % "1.7.25",
+  "org.slf4j" % "log4j-over-slf4j" % "1.7.35",
   "com.adrianhurt" %% "play-bootstrap" % "1.4-P26-B4" exclude("com.typesafe.play", "*"),
   "org.clapper" %% "grizzled-slf4j" % "1.3.3",
   "org.apache.kafka" %% "kafka" % "2.8.1" exclude("log4j","log4j") exclude("org.slf4j", "slf4j-log4j12") force(),
