@@ -416,6 +416,10 @@ case class KafkaManagedOffsetCache(clusterContext: ClusterContext
     groupTopicPartitionOffsetSet.clear()
     groupTopicPartitionOffsetMap.invalidateAll()
     groupTopicPartitionOffsetMap.cleanUp()
+    topicConsumerSetMap.invalidateAll();
+    topicConsumerSetMap.cleanUp();
+    consumerTopicSetMap.invalidateAll();
+    consumerTopicSetMap.cleanUp();
     info(s"KafkaManagedOffsetCache shut down for cluster ${clusterContext.config.name}")
   }
 
