@@ -104,7 +104,7 @@ class Logkafka (val cc: ControllerComponents, val kafkaManagerContext: KafkaMana
   val kafka_2_8_1_Default = CreateLogkafka("","",
     LogkafkaNewConfigs.configMaps(Kafka_2_8_1).map{case(k,v) => LKConfig(k,Some(v))}.toList)
   val kafka_3_3_2_Default = CreateLogkafka("", "",
-    LogkafkaNewConfigs.configMaps(Kafka_2_8_1).map { case (k, v) => LKConfig(k, Some(v)) }.toList)
+    LogkafkaNewConfigs.configMaps(Kafka_3_3_2).map { case (k, v) => LKConfig(k, Some(v)) }.toList)
 
   val defaultCreateForm = Form(
     mapping(
