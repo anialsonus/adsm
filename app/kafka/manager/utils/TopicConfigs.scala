@@ -46,7 +46,8 @@ object TopicConfigs {
     Kafka_2_4_0 -> two00.LogConfig,
     Kafka_2_6_0 -> two00.LogConfig,
     Kafka_2_8_1 -> two00.LogConfig,
-    Kafka_3_3_2 -> two00.LogConfig
+    Kafka_3_3_2 -> two00.LogConfig,
+    Kafka_3_6_2 -> two00.LogConfig
   )
 
   def configNames(version: KafkaVersion): Seq[String] = {
